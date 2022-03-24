@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ExampleGraphStream/ExampleGraphStream.iml" filepath="$PROJECT_DIR$/ExampleGraphStream/ExampleGraphStream.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ExampleJavaFX/ExampleJavaFX.iml" filepath="$PROJECT_DIR$/ExampleJavaFX/ExampleJavaFX.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ExampleJavaFXGraphConcept/ExampleJavaFXGraphConcept.iml" filepath="$PROJECT_DIR$/ExampleJavaFXGraphConcept/ExampleJavaFXGraphConcept.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringGraph.iml" filepath="$PROJECT_DIR$/SpringGraph.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SpringGraphViewer/SpringGraphViewer.iml" filepath="$PROJECT_DIR$/SpringGraphViewer/SpringGraphViewer.iml" />
+    </modules>
+  </component>
+</project>

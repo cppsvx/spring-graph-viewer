@@ -1,0 +1,33 @@
+module com.craneos.sgv {
+    requires java.desktop;
+
+    // javafx
+    requires javafx.controls;
+    requires javafx.fxml;
+    requires javafx.web;
+
+    requires org.controlsfx.controls;
+    requires org.kordamp.bootstrapfx.core;
+    requires eu.hansolo.tilesfx;
+
+    // graphstream
+    requires gs.core;
+    //requires gs.algo;
+    requires gs.ui.javafx;
+
+    // logs
+    requires slf4j.api;
+    // apache
+    requires org.apache.commons.io;
+    requires gs.algo;
+
+    // craneos
+    exports com.craneos.sgv;
+    /*
+    opens com.craneos.sgv to javafx.fxml;
+    exports com.craneos.sgv;
+    exports com.craneos.sgv.fx.controller;
+    opens com.craneos.sgv.fx.controller to javafx.fxml;
+    exports com.craneos.sgv.fx;
+    opens com.craneos.sgv.fx to javafx.fxml;*/
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="SpringGraphViewer" />
+        <module name="ExampleJavaFXGraphConcept" />
+        <module name="ExampleGraphStream" />
+        <module name="ExampleJavaFX" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ExampleGraphStream" target="8" />
+      <module name="ExampleJavaFX" target="11" />
+      <module name="ExampleJavaFXGraphConcept" target="11" />
+      <module name="SpringGraph" target="1.5" />
+      <module name="SpringGraphViewer" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

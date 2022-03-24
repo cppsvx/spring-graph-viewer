@@ -1,11 +1,11 @@
-package com.craneos.sgv.integration.model.spring.main;
+package com.craneos.sgv.integration.model.spring.tags.defs;
 
-import com.craneos.sgv.integration.model.spring.SpringBaseItem;
+import com.craneos.sgv.integration.model.spring.tags.defs.BaseItem;
 import com.craneos.sgv.integration.parser.IntegrationType;
 
 import java.nio.file.Path;
 
-public class Bean extends SpringBaseItem {
+public class Bean extends BaseItem {
 
     private String parent;
     private String fullClass;

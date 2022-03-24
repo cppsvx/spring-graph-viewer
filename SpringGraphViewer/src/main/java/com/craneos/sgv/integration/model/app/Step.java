@@ -1,11 +1,11 @@
 package com.craneos.sgv.integration.model.app;
 
-import com.craneos.sgv.integration.model.spring.SpringBaseItem;
+import com.craneos.sgv.integration.model.spring.tags.defs.BaseItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Step extends SpringBaseItem {
+public class Step extends BaseItem {
 
     private String id;
     private String filename;

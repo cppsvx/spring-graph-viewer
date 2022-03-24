@@ -22,7 +22,7 @@ public class StepIntegrationBuilder extends BaseIntegrationBuilder {
     protected static final String NODE_HEADER_ROUTER = "header-value-router";
     protected static final String NODE_ROUTER = "router";
     protected static final String NODE_SERVICE_ACTIVATOR = "service-activator";
-    protected static final String NODE_SPLITTER = "plitter";
+    protected static final String NODE_SPLITTER = "splitter";
     protected static final String NODE_PAYLOAD_ROUTER = "payload-type-router";
     protected static final String NODE_TRANSFORMER = "transformer";
 
@@ -33,9 +33,6 @@ public class StepIntegrationBuilder extends BaseIntegrationBuilder {
     }
 
     public Step buildStep(Path file, Node node){
-
-
-
         if (ignore(node)){
             return null;
         } else if (nodeContains(node, NODE_SERVICE_ACTIVATOR)){

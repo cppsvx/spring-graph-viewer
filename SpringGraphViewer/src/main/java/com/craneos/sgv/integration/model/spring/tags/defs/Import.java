@@ -1,11 +1,10 @@
-package com.craneos.sgv.integration.model.spring.main;
+package com.craneos.sgv.integration.model.spring.tags.defs;
 
-import com.craneos.sgv.integration.model.spring.SpringBaseItem;
 import com.craneos.sgv.integration.parser.IntegrationType;
 
 import java.nio.file.Path;
 
-public class Import extends SpringBaseItem {
+public class Import extends BaseItem {
 
     private String resource;
     private String pathResource;

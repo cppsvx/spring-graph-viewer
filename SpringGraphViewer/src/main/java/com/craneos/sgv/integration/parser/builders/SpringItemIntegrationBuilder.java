@@ -1,14 +1,14 @@
 package com.craneos.sgv.integration.parser.builders;
 
-import com.craneos.sgv.integration.model.spring.SpringBaseItem;
-import com.craneos.sgv.integration.model.spring.main.Bean;
-import com.craneos.sgv.integration.model.spring.main.Beans;
-import com.craneos.sgv.integration.model.spring.main.Channel;
-import com.craneos.sgv.integration.model.spring.main.Import;
-import com.craneos.sgv.integration.model.spring.main.SubscribeChannel;
-import com.craneos.sgv.integration.model.spring.subs.Bridge;
+import com.craneos.sgv.integration.model.spring.tags.defs.BaseItem;
+import com.craneos.sgv.integration.model.spring.tags.defs.Bean;
+import com.craneos.sgv.integration.model.spring.tags.Beans;
+import com.craneos.sgv.integration.model.spring.tags.defs.Channel;
+import com.craneos.sgv.integration.model.spring.tags.defs.Import;
+import com.craneos.sgv.integration.model.spring.tags.defs.PublishSubscribeChannel;
 import com.craneos.sgv.integration.model.spring.subs.Interceptor;
 import com.craneos.sgv.integration.model.spring.subs.WireTap;
+import com.craneos.sgv.integration.model.spring.tags.stepable.Bridge;
 import com.craneos.sgv.integration.parser.IntegrationType;
 
 import org.apache.commons.io.FilenameUtils;
@@ -38,7 +38,7 @@ public class SpringItemIntegrationBuilder extends BaseIntegrationBuilder {
         return springItemBuilder;
     }
 
-    public SpringBaseItem buildItem(Path file, Node node){
+    public BaseItem buildItem(Path file, Node node){
         if (ignore(node)){
             return null;
         } else if (node.getNodeName().contains(NODE_BEANS)){
@@ -104,7 +104,7 @@ public class SpringItemIntegrationBuilder extends BaseIntegrationBuilder {
         return bean;
     }
 
-    private SpringBaseItem buildBeansStep(Path file, Node parentNode){
+    private BaseItem buildBeansStep(Path file, Node parentNode){
         Node nodeProfile = parentNode.getAttributes().getNamedItem(ATT_PROFILE);
         String id = nodeProfile==null?null:nodeProfile.getNodeValue();
         Beans beans = new Beans(id, file);
@@ -122,20 +122,20 @@ public class SpringItemIntegrationBuilder extends BaseIntegrationBuilder {
         Node nodeInputChannel = parentNode.getAttributes().getNamedItem(ATT_INPUT_CHANNEL);
         Node nodeOutputChannel = parentNode.getAttributes().getNamedItem(ATT_OUTPUT_CHANNEL);
         //
-        Bridge bridge = new Bridge(null, file);
+        Bridge bridge = new Bridge();
         bridge.setInputChannel(nodeInputChannel.getNodeValue());
         bridge.setOutputChannel(nodeOutputChannel.getNodeValue());
         return bridge;
     }
 
-    private SubscribeChannel buildSubscribeChannel(Path file, IntegrationType springItem, Node node){
+    private PublishSubscribeChannel buildSubscribeChannel(Path file, IntegrationType springItem, Node node){
         NamedNodeMap nodeMap = node.getAttributes();
         Node namedItemId = nodeMap.getNamedItem(ATT_ID);
         String id = namedItemId==null?null:namedItemId.getNodeValue();
         //
-        SubscribeChannel subscribeChannel = new SubscribeChannel(id, file);
-        subscribeChannel.setItem(springItem);
-        return subscribeChannel;
+        PublishSubscribeChannel publishSubscribeChannel = new PublishSubscribeChannel(id, file);
+        publishSubscribeChannel.setItem(springItem);
+        return publishSubscribeChannel;
     }
 
     private Channel buildChannel(Path file, IntegrationType springItem, Node parentNode){

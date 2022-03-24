@@ -1,10 +1,10 @@
 package com.craneos.sgv.integration.model.spring.subs;
 
-import com.craneos.sgv.integration.model.spring.SpringBaseItem;
+import com.craneos.sgv.integration.model.spring.tags.defs.BaseItem;
 
 import java.util.List;
 
-public class Interceptor extends SpringBaseItem {
+public class Interceptor extends BaseItem {
 
     private List<WireTap> wireTap;
 

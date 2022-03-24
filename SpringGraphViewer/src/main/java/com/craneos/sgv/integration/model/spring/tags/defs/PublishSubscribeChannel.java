@@ -1,15 +1,14 @@
-package com.craneos.sgv.integration.model.spring.main;
+package com.craneos.sgv.integration.model.spring.tags.defs;
 
-import com.craneos.sgv.integration.model.spring.SpringBaseItem;
 import com.craneos.sgv.integration.parser.IntegrationType;
 
 import java.nio.file.Path;
 
-public class SubscribeChannel extends SpringBaseItem {
+public class PublishSubscribeChannel extends BaseItem {
 
     private boolean applySequence;
 
-    public SubscribeChannel(String id, Path file){
+    public PublishSubscribeChannel(String id, Path file){
         super(id, file, IntegrationType.SUBSCRIBE_CHANNEL);
         this.applySequence = false;
     }

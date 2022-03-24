@@ -1,14 +1,14 @@
-package com.craneos.sgv.integration.model.spring.main;
+package com.craneos.sgv.integration.model.spring.tags;
 
-import com.craneos.sgv.integration.model.spring.SpringBaseItem;
-import com.craneos.sgv.integration.model.spring.subs.Bridge;
+import com.craneos.sgv.integration.model.spring.tags.defs.BaseItem;
+import com.craneos.sgv.integration.model.spring.tags.stepable.Bridge;
 import com.craneos.sgv.integration.parser.IntegrationType;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Beans extends SpringBaseItem {
+public class Beans extends BaseItem {
 
     private String profile;
     private String defaultAutowire;

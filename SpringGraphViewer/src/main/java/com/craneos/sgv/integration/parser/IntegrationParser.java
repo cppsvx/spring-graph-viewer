@@ -3,9 +3,9 @@ package com.craneos.sgv.integration.parser;
 import com.craneos.sgv.integration.model.IntegrationDocument;
 import com.craneos.sgv.integration.model.app.Step;
 import com.craneos.sgv.integration.model.app.XmlFile;
-import com.craneos.sgv.integration.model.spring.SpringBaseItem;
-import com.craneos.sgv.integration.model.spring.subs.Bridge;
+import com.craneos.sgv.integration.model.spring.tags.defs.BaseItem;
 import com.craneos.sgv.integration.model.spring.subs.WireTap;
+import com.craneos.sgv.integration.model.spring.tags.stepable.Bridge;
 import com.craneos.sgv.integration.parser.builders.SpringItemIntegrationBuilder;
 import com.craneos.sgv.integration.parser.builders.StepIntegrationBuilder;
 import org.apache.commons.io.FilenameUtils;
@@ -85,7 +85,7 @@ public class IntegrationParser {
                         } else {
                             Step newStep = new Step();
                             newStep.setId(bridge.getId());
-                            newStep.setFilename(bridge.getFilename());
+                            //newStep.setFilename(bridge.getFilename());
                             newStep.setInputChannel(bridge.getInputChannel());
                             newStep.setOutputChannel(bridge.getOutputChannel());
                             integrationDocument.addStep(newStep);
@@ -108,7 +108,7 @@ public class IntegrationParser {
                 if (step!=null){
                     integrationDocument.addStep(step);
                 }
-                SpringBaseItem item = springBuilder.buildItem(file, node);
+                BaseItem item = springBuilder.buildItem(file, node);
                 if (item !=null){
                     integrationDocument.addSpringItem(item);
                 }

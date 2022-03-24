@@ -1,9 +1,9 @@
-package com.craneos.sgv.integration.model.spring.main;
+package com.craneos.sgv.integration.model.spring.tags.defs;
 
-import com.craneos.sgv.integration.model.spring.SpringBaseItem;
+import com.craneos.sgv.integration.model.spring.tags.defs.BaseItem;
 import com.craneos.sgv.integration.model.spring.subs.Interceptor;
 
-public class Channel extends SpringBaseItem {
+public class Channel extends BaseItem {
 
     private String scope;
     //private Dispatcher dispatcher;

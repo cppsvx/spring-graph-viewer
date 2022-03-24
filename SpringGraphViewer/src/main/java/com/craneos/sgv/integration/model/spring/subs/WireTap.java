@@ -1,9 +1,9 @@
 package com.craneos.sgv.integration.model.spring.subs;
 
 import com.craneos.sgv.integration.model.annotations.Required;
-import com.craneos.sgv.integration.model.spring.SpringBaseItem;
+import com.craneos.sgv.integration.model.spring.tags.defs.BaseItem;
 
-public class WireTap extends SpringBaseItem {
+public class WireTap extends BaseItem {
 
     @Required private String channel;
     private String selector;

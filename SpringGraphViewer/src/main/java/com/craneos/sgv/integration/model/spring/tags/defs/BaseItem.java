@@ -1,24 +1,24 @@
-package com.craneos.sgv.integration.model.spring;
+package com.craneos.sgv.integration.model.spring.tags.defs;
 
 import com.craneos.sgv.integration.parser.IntegrationType;
 
 import java.nio.file.Path;
 
-public class SpringBaseItem {
+public class BaseItem {
 
     protected String id;
     protected IntegrationType item;
     protected String absolutePath;
     protected String filename;
 
-    public SpringBaseItem() {
+    public BaseItem() {
         this.id = null;
         this.item = null;
         this.absolutePath = null;
         this.filename = null;
     }
 
-    public SpringBaseItem(String id, Path file, IntegrationType type) {
+    public BaseItem(String id, Path file, IntegrationType type) {
         this.id = id;
         this.item = type;
         this.absolutePath = file.toString();

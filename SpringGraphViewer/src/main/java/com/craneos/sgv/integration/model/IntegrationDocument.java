@@ -2,11 +2,11 @@ package com.craneos.sgv.integration.model;
 
 import com.craneos.sgv.integration.model.app.Step;
 import com.craneos.sgv.integration.model.app.XmlFile;
-import com.craneos.sgv.integration.model.spring.SpringBaseItem;
-import com.craneos.sgv.integration.model.spring.main.Bean;
-import com.craneos.sgv.integration.model.spring.main.Beans;
-import com.craneos.sgv.integration.model.spring.main.Channel;
-import com.craneos.sgv.integration.model.spring.main.Import;
+import com.craneos.sgv.integration.model.spring.tags.defs.BaseItem;
+import com.craneos.sgv.integration.model.spring.tags.defs.Bean;
+import com.craneos.sgv.integration.model.spring.tags.Beans;
+import com.craneos.sgv.integration.model.spring.tags.defs.Channel;
+import com.craneos.sgv.integration.model.spring.tags.defs.Import;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,7 +42,7 @@ public class IntegrationDocument {
         flow.put(step.getInputChannel(), step);
     }
 
-    public void addSpringItem(SpringBaseItem item){
+    public void addSpringItem(BaseItem item){
         try{
             if (item instanceof Channel){
                 channels.put(item.getId(), ((Channel)item));

@@ -1,6 +1,6 @@
 package com.craneos.sgv.integration.model.app;
 
-import com.craneos.sgv.integration.model.spring.main.Import;
+import com.craneos.sgv.integration.model.spring.tags.defs.Import;
 
 import java.nio.file.Path;
 import java.util.ArrayList;

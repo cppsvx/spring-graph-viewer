@@ -16,7 +16,7 @@
       <module name="ExampleGraphStream" target="8" />
       <module name="ExampleJavaFX" target="11" />
       <module name="ExampleJavaFXGraphConcept" target="11" />
-      <module name="spring-graph-flow" target="1.5" />
+      <module name="spring-graph-viewer" target="1.5" />
       <module name="SpringGraphViewer" target="11" />
     </bytecodeTargetLevel>
   </component>

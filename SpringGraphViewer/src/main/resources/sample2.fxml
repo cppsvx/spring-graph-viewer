@@ -41,6 +41,7 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import com.craneos.sgv.fx.DetailsPanel?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -48,9 +49,9 @@
 <?import javafx.scene.text.Font?>
 
 <?import javafx.scene.control.Button?>
-<VBox fx:id="mainVBox" fx:controller="com.craneos.sgv.fx.controller.FXMLExampleController" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="main" fx:controller="com.craneos.sgv.fx.controller.FXMLExampleController" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
   <children>
-    <MenuBar fx:id="mainVBoxMenuBar" VBox.vgrow="NEVER">
+    <MenuBar fx:id="mainMenuBar" VBox.vgrow="NEVER">
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
@@ -89,9 +90,9 @@
         </Menu>
       </menus>
     </MenuBar>
-    <SplitPane fx:id="mainVBoxSplitPane" dividerPositions="0.2505567928730512, 0.7505567928730512" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <SplitPane fx:id="mainSplitPane" dividerPositions="0.2505567928730512, 0.7505567928730512" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <items>
-        <AnchorPane fx:id="mainVBoxPaneLeft" prefHeight="551.0" prefWidth="142.0">
+        <AnchorPane fx:id="mainPaneLeft" prefHeight="551.0" prefWidth="142.0">
           <children>
             <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Master" textAlignment="CENTER" wrapText="false">
               <font>
@@ -101,12 +102,13 @@
                 <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
               </textFill>
             </Label>
-            <Button fx:id="btHello" text="Hello!" onAction="#onHelloButtonClick"/>
+            <Button fx:id="btStart" text="Start!" onAction="#onLoadGraph" layoutX="18.0" layoutY="55.0" mnemonicParsing="false"/>
+            <Button fx:id="btReport" text="Report!" onAction="#onGenerateReport" layoutX="18.0" layoutY="96.0" mnemonicParsing="false"/>
           </children>
         </AnchorPane>
-        <AnchorPane fx:id="mainVBoxPaneRight" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0" >
+        <AnchorPane fx:id="mainPaneCenter" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0" >
           <children>
-            <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="View" textAlignment="CENTER" textFill="$x2" wrapText="false" />
+            <Label fx:id="pcLabel1"  alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="View" textAlignment="CENTER" textFill="$x2" wrapText="false" />
           </children>
         </AnchorPane>
         <!--<ScrollPane prefHeight="-1.0" prefWidth="-1.0">
@@ -118,11 +120,11 @@
             </AnchorPane>
           </content>
         </ScrollPane>-->
-        <AnchorPane>
+        <DetailsPanel fx:id="mainPaneRight">
           <children>
-            <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" wrapText="false" />
+            <Label fx:id="mprLabel1" alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" wrapText="false" />
           </children>
-        </AnchorPane>
+        </DetailsPanel>
       </items>
     </SplitPane>
     <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">

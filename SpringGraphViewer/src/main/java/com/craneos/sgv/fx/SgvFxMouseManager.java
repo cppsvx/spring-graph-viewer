@@ -1,6 +1,6 @@
 package com.craneos.sgv.fx;
 
-import com.craneos.sgv.integration.parser.ParserCallback;
+import com.craneos.sgv.fx.callbacks.PanelCallback;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import org.graphstream.ui.fx_viewer.util.FxMouseManager;
@@ -11,11 +11,11 @@ import java.util.EnumSet;
 
 public class SgvFxMouseManager extends FxMouseManager {
 
-    private ParserCallback parserCallback;
+    private PanelCallback panelCallback;
 
-    public SgvFxMouseManager(EnumSet<InteractiveElement> types, ParserCallback parserCallback) {
+    public SgvFxMouseManager(EnumSet<InteractiveElement> types, PanelCallback panelCallback) {
         super(types);
-        this.parserCallback = parserCallback;
+        this.panelCallback = panelCallback;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class SgvFxMouseManager extends FxMouseManager {
             element.setAttribute("ui.selected");
         } else {
             element.setAttribute("ui.clicked");
-            parserCallback.getNodeByName();
+            panelCallback.refreshPanel(element.getId());
         }
     }
 

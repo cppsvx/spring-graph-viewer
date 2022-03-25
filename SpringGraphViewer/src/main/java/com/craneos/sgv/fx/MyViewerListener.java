@@ -23,7 +23,7 @@ import org.graphstream.ui.view.util.InteractiveElement;
 
 import java.util.EnumSet;
 import java.util.Optional;
-
+/*
 public class MyViewerListener implements ViewerListener, EventHandler {
 
     private Graph graph;
@@ -54,7 +54,7 @@ public class MyViewerListener implements ViewerListener, EventHandler {
                 double yy = ((MouseEvent) event).getSceneY();
 
                 graph.nodes().filter(n -> n.hasAttribute("ui.selected")).forEach(n -> n.removeAttribute("ui.selected"));
-/*
+/**********************
                 View view = fxDefaultView.getViewer().addDefaultView(false);
                 //GraphicElement ge = view.findGraphicElementAt(EnumSet.of(InteractiveElement.NODE), xx, yy);
                 //GraphicElement ge = view.getCamera().findGraphicElementAt(viewer.getGraphicGraph(), EnumSet.of(InteractiveElement.NODE), xx, yy);
@@ -84,7 +84,7 @@ public class MyViewerListener implements ViewerListener, EventHandler {
                     System.out.println("xyz2 = "+xyz2);
                 });
                 // now "xyz" attributes of the nodes are updated and we can use them, for example
-*/
+//
 
                 System.out.println("MOUSE_PRESSED_2");
             } else if (type==MouseEvent.MOUSE_RELEASED){
@@ -137,4 +137,4 @@ public class MyViewerListener implements ViewerListener, EventHandler {
     }
 
 
-}
+}***/

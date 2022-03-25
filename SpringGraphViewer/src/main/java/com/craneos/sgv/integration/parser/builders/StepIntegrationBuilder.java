@@ -1,6 +1,8 @@
 package com.craneos.sgv.integration.parser.builders;
 
 import com.craneos.sgv.integration.model.app.Step;
+import com.craneos.sgv.integration.model.app.XmlFile;
+import com.craneos.sgv.integration.model.spring.stepable.IStep;
 import com.craneos.sgv.integration.parser.IntegrationType;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
@@ -32,7 +34,7 @@ public class StepIntegrationBuilder extends BaseIntegrationBuilder {
         return stepBuilder;
     }
 
-    public Step buildStep(Path file, Node node){
+    public Step buildStep(XmlFile file, Node node){
         if (ignore(node)){
             return null;
         } else if (nodeContains(node, NODE_SERVICE_ACTIVATOR)){
@@ -61,7 +63,7 @@ public class StepIntegrationBuilder extends BaseIntegrationBuilder {
         return null;
     }
 
-    private Step buildHeader(Path file, IntegrationType springItem, Node parentNode) {
+    private Step buildHeader(XmlFile file, IntegrationType springItem, Node parentNode) {
         NamedNodeMap nodeMap = parentNode.getAttributes();
         Node namedItemId = nodeMap.getNamedItem(ATT_ID);
         Node namedItemInputChannel = nodeMap.getNamedItem(ATT_INPUT_CHANNEL);
@@ -70,8 +72,7 @@ public class StepIntegrationBuilder extends BaseIntegrationBuilder {
         Step step = new Step();
         step.setId(namedItemId==null?"":namedItemId.getNodeValue());
         step.setItem(springItem);
-        step.setFilename(file.getFileName().toString());
-        step.setAbsolutePath(file.toString());
+        step.setXmlFile(file);
         step.setInputChannel(namedItemInputChannel.getNodeValue());
         if (namedItemOutputChannel!=null) {
             step.setOutputChannel(namedItemOutputChannel.getNodeValue());
@@ -80,7 +81,7 @@ public class StepIntegrationBuilder extends BaseIntegrationBuilder {
         return step;
     }
 
-    private Step buildChainStep(Path file, IntegrationType springItem, Node parentNode) {
+    private Step buildChainStep(XmlFile file, IntegrationType springItem, Node parentNode) {
         NamedNodeMap nodeMap = parentNode.getAttributes();
         Node namedItemId = nodeMap.getNamedItem(ATT_ID);
         Node namedItemInputChannel = nodeMap.getNamedItem(ATT_INPUT_CHANNEL);
@@ -90,8 +91,7 @@ public class StepIntegrationBuilder extends BaseIntegrationBuilder {
         Step step = new Step();
         step.setId(namedItemId==null?"":namedItemId.getNodeValue());
         step.setItem(springItem);
-        step.setFilename(file.getFileName().toString());
-        step.setAbsolutePath(file.toString());
+        step.setXmlFile(file);
         step.setInputChannel(namedItemInputChannel.getNodeValue());
         //
         // OUTPUT
@@ -102,10 +102,8 @@ public class StepIntegrationBuilder extends BaseIntegrationBuilder {
             }
         }
         if (namedItemOutputChannel != null && namedItemDiscardChannel != null) {
-            List<String> nextChannels = new ArrayList<>();
-            nextChannels.add(namedItemOutputChannel.getNodeValue());
-            nextChannels.add(namedItemDiscardChannel.getNodeValue());
-            step.setNextChannels(nextChannels);
+            step.addChannel(namedItemOutputChannel.getNodeValue());
+            step.addChannel(namedItemDiscardChannel.getNodeValue());
         } else if (namedItemDiscardChannel!=null){
             step.setDiscardChannel(namedItemDiscardChannel.getNodeValue());
         } else if (namedItemOutputChannel!=null){
@@ -114,26 +112,24 @@ public class StepIntegrationBuilder extends BaseIntegrationBuilder {
         return step;
     }
 
-    private Step buildStep(Path file, IntegrationType springItem, Node parentNode) {
+    private Step buildStep(XmlFile file, IntegrationType springItem, Node parentNode) {
         NamedNodeMap nodeMap = parentNode.getAttributes();
-        Node namedItemId = nodeMap.getNamedItem(ATT_ID);
-        Node namedItemInputChannel = nodeMap.getNamedItem(ATT_INPUT_CHANNEL);
-        Node namedItemOutputChannel = nodeMap.getNamedItem(ATT_OUTPUT_CHANNEL);
+        String id = nodeMap.getNamedItem(ATT_ID)==null?"":nodeMap.getNamedItem(ATT_ID).getNodeValue();
+        String inputChannel = nodeMap.getNamedItem(ATT_INPUT_CHANNEL)==null?null:nodeMap.getNamedItem(ATT_INPUT_CHANNEL).getNodeValue();
+        String outputChannel = nodeMap.getNamedItem(ATT_OUTPUT_CHANNEL)==null?null:nodeMap.getNamedItem(ATT_OUTPUT_CHANNEL).getNodeValue();
         //
-        Step step = new Step();
-        step.setId(namedItemId==null?"":namedItemId.getNodeValue());
+        Step step = Step.Builder.create()
+                .setId(id)
+                .setInputChannel(inputChannel)
+                .setOutputChannel(outputChannel)
+                .build();
         step.setItem(springItem);
-        step.setFilename(file.getFileName().toString());
-        step.setAbsolutePath(file.toString());
-        step.setInputChannel(namedItemInputChannel.getNodeValue());
-        if (namedItemOutputChannel!=null) {
-            step.setOutputChannel(namedItemOutputChannel.getNodeValue());
-        }
+        step.setXmlFile(file);
         //
         return step;
     }
 
-    private Step buildFilter(Path file, IntegrationType springItem, Node node){
+    private Step buildFilter(XmlFile file, IntegrationType springItem, Node node){
         NamedNodeMap nodeMap = node.getAttributes();
         Node namedItemDiscardChannel = nodeMap.getNamedItem(ATT_DISCARD_CHANNEL);
         Node namedItemInputChannel = nodeMap.getNamedItem(ATT_INPUT_CHANNEL);
@@ -141,14 +137,11 @@ public class StepIntegrationBuilder extends BaseIntegrationBuilder {
         //
         Step step = new Step();
         step.setItem(springItem);
-        step.setFilename(file.getFileName().toString());
-        step.setAbsolutePath(file.toString());
+        step.setXmlFile(file);
         step.setInputChannel(namedItemInputChannel.getNodeValue());
         if (namedItemOutputChannel!=null && namedItemDiscardChannel!=null){
-            List<String> nextChannels = new ArrayList<>();
-            nextChannels.add(namedItemOutputChannel.getNodeValue());
-            nextChannels.add(namedItemDiscardChannel.getNodeValue());
-            step.setNextChannels(nextChannels);
+            step.addChannel(namedItemOutputChannel.getNodeValue());
+            step.addChannel(namedItemDiscardChannel.getNodeValue());
         } else if (namedItemDiscardChannel!=null){
             step.setDiscardChannel(namedItemDiscardChannel.getNodeValue());
         } else if (namedItemOutputChannel!=null){
@@ -157,25 +150,25 @@ public class StepIntegrationBuilder extends BaseIntegrationBuilder {
         return step;
     }
 
-    private Step buildRouterStep(Path file, IntegrationType springItem, Node parentNode){
+    private Step buildRouterStep(XmlFile file, IntegrationType springItem, Node parentNode){
         NamedNodeMap nodeMap = parentNode.getAttributes();
         Node namedItemInputChannel = nodeMap.getNamedItem(ATT_INPUT_CHANNEL);
-        List<String> nextChannels = new ArrayList<>();
+        List<String> channelsList = new ArrayList<>();
         for (int i = 0; i < parentNode.getChildNodes().getLength(); i++) {
             Node node = parentNode.getChildNodes().item(i);
             if (node.getNodeName().equals(ATT_MAPPING)){
                 Node item = node.getAttributes().getNamedItem(ATT_CHANNEL);
                 String nextChannel = item.getNodeValue();
-                nextChannels.add(nextChannel);
+                channelsList.add(nextChannel);
             }
         }
         //
         Step step = new Step();
         step.setItem(springItem);
-        step.setFilename(file.getFileName().toString());
-        step.setAbsolutePath(file.toString());
+        step.setXmlFile(file);
         step.setInputChannel(namedItemInputChannel.getNodeValue());
-        step.setNextChannels(nextChannels);
+        step.setChannels(channelsList);
+        //step.setNextChannels(nextChannels);
         //
         return step;
     }

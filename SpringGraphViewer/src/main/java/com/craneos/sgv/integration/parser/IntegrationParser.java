@@ -3,9 +3,10 @@ package com.craneos.sgv.integration.parser;
 import com.craneos.sgv.integration.model.IntegrationDocument;
 import com.craneos.sgv.integration.model.app.Step;
 import com.craneos.sgv.integration.model.app.XmlFile;
-import com.craneos.sgv.integration.model.spring.tags.defs.BaseItem;
-import com.craneos.sgv.integration.model.spring.subs.WireTap;
-import com.craneos.sgv.integration.model.spring.tags.stepable.Bridge;
+import com.craneos.sgv.integration.model.spring.defs.BaseItem;
+import com.craneos.sgv.integration.model.spring.stepable.IStep;
+import com.craneos.sgv.integration.model.spring.types.WireTap;
+import com.craneos.sgv.integration.model.spring.stepable.Bridge;
 import com.craneos.sgv.integration.parser.builders.SpringItemIntegrationBuilder;
 import com.craneos.sgv.integration.parser.builders.StepIntegrationBuilder;
 import org.apache.commons.io.FilenameUtils;
@@ -59,7 +60,7 @@ public class IntegrationParser {
         filesList.stream().map(file-> buildXmlFile(file)).forEach(xmlFile -> {
             integrationDocument.addXmlFile(xmlFile);
             Document document = IntegrationUtil.convertStringToXMLDocument(xmlFile.getContent());
-            parseDocument(xmlFile.getPath(), document);
+            parseDocument(xmlFile, document);
         });
         // Create STEPS from CHANNELS
         integrationDocument.getChannels().values().stream()
@@ -69,7 +70,7 @@ public class IntegrationParser {
                     for(WireTap wireTap: wireTapList){
                         Step step = integrationDocument.getFlow().get(channel.getId());
                         if (step!=null){
-                            step.addNextChannel(wireTap.getChannel());
+                            step.addChannel(wireTap.getChannel());
                         }
                     }
                 });
@@ -81,10 +82,11 @@ public class IntegrationParser {
                     for(Bridge bridge: bridges){
                         Step step = integrationDocument.getFlow().get(bridge.getId());
                         if (step!=null){
-                            step.addNextChannel(bridge.getInputChannel());
+                            step.addChannel(bridge.getInputChannel());
                         } else {
                             Step newStep = new Step();
                             newStep.setId(bridge.getId());
+                            newStep.setXmlFile(beanss.getXmlFile());
                             //newStep.setFilename(bridge.getFilename());
                             newStep.setInputChannel(bridge.getInputChannel());
                             newStep.setOutputChannel(bridge.getOutputChannel());
@@ -95,7 +97,7 @@ public class IntegrationParser {
         return integrationDocument;
     }
 
-    private void parseDocument(Path file, Document document){
+    private void parseDocument(XmlFile file, Document document){
         try {
             StepIntegrationBuilder stepBuilder = StepIntegrationBuilder.instantiate(document);
             SpringItemIntegrationBuilder springBuilder = SpringItemIntegrationBuilder.instantiate(document);
@@ -119,7 +121,7 @@ public class IntegrationParser {
         }
     }
 
-    private void parseProperties(Path file, Node parentNode) throws Exception {
+    private void parseProperties(XmlFile file, Node parentNode) throws Exception {
         NodeList nodeList = parentNode.getChildNodes();
         // Check node
         parseAttributes(file, parentNode);
@@ -130,7 +132,7 @@ public class IntegrationParser {
         }
     }
 
-    private void parseAttributes(Path file, Node parentNode) throws Exception {
+    private void parseAttributes(XmlFile file, Node parentNode) throws Exception {
         NamedNodeMap attributesMap = parentNode.getAttributes();
         if (attributesMap!=null) {
             for (int i = 0; i < attributesMap.getLength(); i++) {
@@ -147,7 +149,7 @@ public class IntegrationParser {
             Pattern pattern = Pattern.compile("\\$\\{.*\\}");
             Matcher matcher = pattern.matcher("${");
             if (value.contains("${")) {
-                integrationDocument.addProperty(file.getFileName().toString(), value);
+                integrationDocument.addProperty(file.getFilename().toString(), value);
             } else if (matcher.find()) {
                 System.out.println("dafaaa");
             }

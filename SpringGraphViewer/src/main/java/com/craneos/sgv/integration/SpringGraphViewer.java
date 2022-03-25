@@ -1,4 +1,4 @@
-package com.craneos.sgv;
+package com.craneos.sgv.integration;
 
 import com.craneos.sgv.integration.graph.graph.GraphFactory;
 import com.craneos.sgv.integration.graph.graph.GraphType;
@@ -7,6 +7,7 @@ import com.craneos.sgv.integration.model.IntegrationDocument;
 import com.craneos.sgv.integration.model.app.Step;
 import com.craneos.sgv.integration.model.app.XmlFile;
 import com.craneos.sgv.integration.parser.IntegrationParser;
+import org.graphstream.graph.Graph;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -15,45 +16,43 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class FlowApp {
+public class SpringGraphViewer {
 
-    private static final String PATH_PLATFORM = "D:\\Development\\workspaces\\java\\rogers";
-    //private static final String STARTING_CHANEL = "ebcdicQARerunTriggerIngestChannel";
-    private static final String STARTING_CHANEL = "bulk-preview-fragment-done-channel";
+
 
     private HashMap<String, String> data;
     private HashMap<String, String> properties;
 
-    public static void main(String[] args){
-        System.setProperty("org.graphstream.ui", "javafx");
-        System.setProperty("org.graphstream.debug", "true");
-        FlowApp fApp = new FlowApp();
-        fApp.execute(null);
-    }
 
-    public void execute(String[] args) {
+    /*public IntegrationDocument getIntegrationDocument() {
+        return integrationDocument;
+    }*/
+/*
+    public Graph execute() {
+        Graph graph = null;
         try {
             this.data = new HashMap<>();
             IntegrationDocument integrationDocument = IntegrationParser.getInstance().parse(PATH_PLATFORM);
-            //IntegrationDocument integrationDocument = IntegrationParser.parse(PATH_PLATFORM);
-            IBaseGraph graph = GraphFactory.getGraphDrawer(GraphType.GRAPH_STREAM, integrationDocument.getFlow(), STARTING_CHANEL);
-            graph.drawFlow();
-            graph.writeUsedFiles();
+            IBaseGraph graphBuilder = GraphFactory.getGraphDrawer(GraphType.GRAPH_STREAM, integrationDocument.getFlow(), STARTING_CHANEL);
+            graph = graphBuilder.generateGraph();
+            graphBuilder.writeUsedFiles();
             //
-            generateDataReportXML(integrationDocument, STARTING_CHANEL);
-            printReportXML(integrationDocument);
+            //generateDataReportXML(integrationDocument, STARTING_CHANEL);
+            //printReportXML(integrationDocument);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return graph;
     }
-
+    */
+/*
     private void generateDataReportXML(IntegrationDocument integrationDocument, String startingChannel){
         Step step = integrationDocument.getFlow().get(startingChannel);
         if (step!=null){
             lookForImports(integrationDocument, step.getFilename());
-            if (step.getChannels()!=null && step.getChannels().size()>0){
-                for (int i=0; i<step.getChannels().size();i++){
-                    generateDataReportXML(integrationDocument, step.getChannels().get(i));
+            if (step.getNextChannels()!=null && step.getNextChannels().size()>0){
+                for (int i=0; i<step.getNextChannels().size();i++){
+                    generateDataReportXML(integrationDocument, step.getNextChannels().get(i));
                 }
             } else {
                 if (step.getOutputChannel()!=null){
@@ -80,17 +79,7 @@ public class FlowApp {
                     }
                 });
             }
-/*
-            data.put(filename, filename);
-            integrationDocument.getImports().get(filename).stream().forEach(item -> {
-                List<Import> simport = integrationDocument.getImports().get(item.getResource());
-                if (simport!=null){
-                    lookForImports(integrationDocument, item.getResource());
-                } else {
-                    data.put(filename, filename);
-                    data.put(item.getResource(), item.getResource());
-                }
-            });*/
+
         }
     }
 
@@ -161,5 +150,6 @@ public class FlowApp {
             System.out.println(" ");
         });
     }
+*/
 
 }

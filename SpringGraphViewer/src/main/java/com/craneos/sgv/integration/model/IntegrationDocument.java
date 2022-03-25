@@ -2,11 +2,12 @@ package com.craneos.sgv.integration.model;
 
 import com.craneos.sgv.integration.model.app.Step;
 import com.craneos.sgv.integration.model.app.XmlFile;
-import com.craneos.sgv.integration.model.spring.tags.defs.BaseItem;
-import com.craneos.sgv.integration.model.spring.tags.defs.Bean;
-import com.craneos.sgv.integration.model.spring.tags.Beans;
-import com.craneos.sgv.integration.model.spring.tags.defs.Channel;
-import com.craneos.sgv.integration.model.spring.tags.defs.Import;
+import com.craneos.sgv.integration.model.spring.defs.BaseItem;
+import com.craneos.sgv.integration.model.spring.defs.Bean;
+import com.craneos.sgv.integration.model.spring.defs.Beans;
+import com.craneos.sgv.integration.model.spring.defs.Channel;
+import com.craneos.sgv.integration.model.spring.defs.Import;
+import com.craneos.sgv.integration.model.spring.stepable.IStep;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -94,11 +94,11 @@ public class GraphStream implements IBaseGraph {
     private void proccessFlow(HashMap<String, Step> flow, Graph graph, String startingChannel, Step parentStep){
         Step step = flow.get(startingChannel);
         if (step!=null){
-            if (step.getNextChannels()!=null && step.getNextChannels().size()>0){
+            if (step.getChannels()!=null && step.getChannels().size()>0){
                 addNode(graph, step.getFilename(), step.getInputChannel());
                 addEdge(graph, parentStep.getInputChannel(), step.getInputChannel());
-                for (int i=0; i<step.getNextChannels().size();i++){
-                    proccessFlow(flow, graph, step.getNextChannels().get(i), step);
+                for (int i=0; i<step.getChannels().size();i++){
+                    proccessFlow(flow, graph, step.getChannels().get(i), step);
                 }
             } else {
                 addNode(graph, step.getFilename(), step.getInputChannel());

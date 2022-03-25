@@ -5,8 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/ExampleGraphStream/ExampleGraphStream.iml" filepath="$PROJECT_DIR$/ExampleGraphStream/ExampleGraphStream.iml" />
       <module fileurl="file://$PROJECT_DIR$/ExampleJavaFX/ExampleJavaFX.iml" filepath="$PROJECT_DIR$/ExampleJavaFX/ExampleJavaFX.iml" />
       <module fileurl="file://$PROJECT_DIR$/ExampleJavaFXGraphConcept/ExampleJavaFXGraphConcept.iml" filepath="$PROJECT_DIR$/ExampleJavaFXGraphConcept/ExampleJavaFXGraphConcept.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SpringGraph.iml" filepath="$PROJECT_DIR$/SpringGraph.iml" />
       <module fileurl="file://$PROJECT_DIR$/SpringGraphViewer/SpringGraphViewer.iml" filepath="$PROJECT_DIR$/SpringGraphViewer/SpringGraphViewer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-graph-flow.iml" filepath="$PROJECT_DIR$/spring-graph-flow.iml" />
     </modules>
   </component>
 </project>

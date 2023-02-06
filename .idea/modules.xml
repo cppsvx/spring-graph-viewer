@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/ExampleJavaFX/ExampleJavaFX.iml" filepath="$PROJECT_DIR$/ExampleJavaFX/ExampleJavaFX.iml" />
       <module fileurl="file://$PROJECT_DIR$/ExampleJavaFXGraphConcept/ExampleJavaFXGraphConcept.iml" filepath="$PROJECT_DIR$/ExampleJavaFXGraphConcept/ExampleJavaFXGraphConcept.iml" />
       <module fileurl="file://$PROJECT_DIR$/SpringGraphViewer/SpringGraphViewer.iml" filepath="$PROJECT_DIR$/SpringGraphViewer/SpringGraphViewer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TestCode/TestCode.iml" filepath="$PROJECT_DIR$/TestCode/TestCode.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-graph-viewer.iml" filepath="$PROJECT_DIR$/spring-graph-viewer.iml" />
     </modules>
   </component>

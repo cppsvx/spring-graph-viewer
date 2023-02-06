@@ -4,9 +4,10 @@
 .settings/
 
 # Intellij
-.idea/
-*.iml
-*.iws
+#TODO enable this
+#.idea/
+#*.iml
+#*.iws
 
 # Mac
 .DS_Store

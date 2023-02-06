@@ -13,6 +13,7 @@
         <module>ExampleGraphStream</module>
         <module>ExampleJavaFX</module>
         <module>ExampleJavaFXGraphConcept</module>
+        <module>TestCode</module>
     </modules>
     <name>SpringGraph</name>
 

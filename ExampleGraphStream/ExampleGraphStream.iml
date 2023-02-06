@@ -7,6 +7,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/${project.build.directory}/classes" />
+      <excludeFolder url="file://$MODULE_DIR$/${project.build.directory}/test-classes" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -26,15 +28,15 @@
     <orderEntry type="library" name="Maven: bouncycastle:bcprov-jdk14:138" level="project" />
     <orderEntry type="library" name="Maven: org.graphstream:gs-ui-javafx:2.0" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:13" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:win:13" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:mac:13" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:13" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:win:13" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:mac:13" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-swing:13" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-swing:win:13" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-swing:mac:13" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:13" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:win:13" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:mac:13" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-base:13" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:win:13" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:mac:13" level="project" />
     <orderEntry type="library" name="Maven: org.jgrapht:jgrapht-core:1.5.1" level="project" />
     <orderEntry type="library" name="Maven: org.jheaps:jheaps:0.13" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-log4j12:1.7.7" level="project" />

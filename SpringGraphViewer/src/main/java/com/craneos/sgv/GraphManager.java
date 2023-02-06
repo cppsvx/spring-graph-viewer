@@ -11,7 +11,7 @@ import org.graphstream.graph.Graph;
 public class GraphManager {
 
     // TODO load from file/input text
-    private static final String PATH_PLATFORM = "D:\\Development\\workspaces\\java\\rogers";
+    private static final String PATH_PLATFORM = "/Users/sanchezc/Development/git/rogers";
     //private static final String STARTING_CHANEL = "ebcdicQARerunTriggerIngestChannel";
     private static final String STARTING_CHANEL = "bulk-preview-fragment-done-channel";
     //
